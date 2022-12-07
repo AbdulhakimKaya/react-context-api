@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {ThemeContextProvider} from "./contexts/ThemeContext";
+import {LangContextProvider} from "./contexts/LangContext";
+import './App.css'
+import Container from "./Container";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () =>
+    (
+        <>
+            {/* Altta yorum satırında olan kod için yorum yapıldı
+            ThemeContext ile bir veri sağlayabilmek için Provider kullanıldı
+            Bu Provider'ın altında çağırılan herhangi bir component üzerinden bu context deki veriye erişebiliriz
+            value prop'unda sağlanılan veriye herhangi bir component'den erişebiliriz
+            */}
+            {/*<ThemeContext.Provider value={"light"}>*/}
+            {/*    <ChangeTheme/>*/}
+            {/*</ThemeContext.Provider>*/}
+
+            <LangContextProvider>
+                <ThemeContextProvider>
+                    <Container/>
+                </ThemeContextProvider>
+            </LangContextProvider>
+        </>
+    );
+
 
 export default App;
